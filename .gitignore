@@ -1,0 +1,7 @@
+*.pyc
+settings.py
+*.json
+SetupSteps.txt
+install.sh
+media/temp
+media/breweries

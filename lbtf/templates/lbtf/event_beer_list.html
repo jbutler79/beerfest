@@ -1,0 +1,28 @@
+{% extends 'lbtf/base.html' %}
+
+{% block content %}
+  <table class="table-striped" style="width:800px margin:2px">
+    <thead>
+      <th>Event</th>
+      <th>Brewery</th>
+      <th>Beer</th>
+      <th>Style</th>
+      <th>ABV</th>
+      <th>VIP</th>
+      <th>Bottle Row</th>
+      <th></th>
+    </thead>
+    {% for event_beer in event_beers %}
+      <tr>
+        <td>{{ event_beer.event_brewery.event }}</td>
+        <td>{{ event_beer.beer.brewery }}</td>
+        <td>{{ event_beer.beer.beer_name }}</td>
+        <td>{{ event_beer.beer.style }}</td>
+        <td>{{ event_beer.beer.abv }}</td>
+        <td>{{ event_beer.vip }}</td>
+        <td>{{ event_beer.bottle_row }}</td>
+        <td><a href="{% url "event_beer_edit" pk=event_beer.id %}">edit</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

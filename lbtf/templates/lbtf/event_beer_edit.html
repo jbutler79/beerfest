@@ -1,0 +1,38 @@
+{% extends 'lbtf/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <form action="{{ action }}" method="POST" class="form-horizontal" role="form">
+      {% csrf_token %}
+      <fieldset>
+        {% if event_beer.id %}
+          <legend><h2>Edit Beer at Event</h2></legend>
+          <input type="hidden" value="{{event_beer.id}}" id="event_beer_id" />
+        {% else %}
+          <legend><h2>Add Beer to Event</h2></legend>
+        {% endif %}
+
+        {% for field in form %}
+
+          <div class="form-group" id="{{ field.auto_id }}_container">
+            <label class="col-md-4 control-label" for="{{ field.label }}">{{ field.label_tag }}</label>
+              <div class="col-md-4">{{ field }}</div>
+          </div>
+
+        {% endfor %}
+
+        <input id="save_event_beer" type="submit" class="btn btn-default col-md-offset-4" value="Save" />
+        <a href="{% url "event_beer_list" %}" class="btn btn-default">Cancel</a>
+      </fieldset>
+    </form>
+
+    <script type='text/javascript' src="{% static "script/jquery.js" %}"></script>
+  </div>
+
+
+{% endblock %}
+
+{% block extra-js %}
+
+{% endblock %}

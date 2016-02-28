@@ -1,0 +1,23 @@
+{% extends 'lbtf/base.html' %}
+
+{% block content %}
+  <div class="container"><form class="form-horizontal"><fieldset>
+  <legend><h2>Brewery List</h2></legend>
+
+  {% for brewery in breweries %}
+    <div class="media">
+      <div class="media-left media-middle">
+        <a href="{{ brewery.website }}">
+          <img class="media-object" src="{{ brewery.logo.url }}" alt="..." style="height:64px; width:64px">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{ brewery.brewery_name }} (<a href="{% url "brewery_edit" pk=brewery.id %}">edit</a>)</h4>
+        <p>{{ brewery.city }}, {{ brewery.state_province }} {{ brewery.country }}
+        <br><a href="{{ brewery.website }}">{{ brewery.website }}</a></p>
+      </div>
+    </div>
+    {% endfor %}
+
+  </fieldset></form></div>
+{% endblock %}

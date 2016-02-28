@@ -1,0 +1,26 @@
+{% extends 'lbtf/base.html' %}
+
+{% block content %}
+  <table class="table-striped" style="width:800px">
+    <thead>
+      <th>Beer</th>
+      <th>Brewery</th>
+      <th>Style</th>
+      <th>ABV</th>
+    </thead>
+    {% for beer in beers %}
+      <tr>
+        <td>{{ beer.beer_name }}</td>
+        <td>{{ beer.brewery }}</td>
+        <td>{{ beer.style }}</td>
+        <td>{{ beer.abv }}</td>
+      </tr>
+      <!--<div>
+        <h4>{{ beer.beer_name }}</h4>
+        <p>Brewery: {{ beer.brewery }}<br>
+           Style: {{ beer.style }}<br>
+           ABV: {{ beer.abv }}</p>
+      </div> -->
+    {% endfor %}
+  </table>
+{% endblock %}
