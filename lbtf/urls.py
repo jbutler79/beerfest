@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 import views
-from .views import BreweryCreate, BreweryUpdate
+from .views import BreweryCreate, BreweryUpdate, BeerUpdate
 from .views import EventBeerCreate, EventBeerUpdate
 
 urlpatterns = [
@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^lbtf/brewery/(?P<pk>\d+)/edit$', BreweryUpdate.as_view(), name='brewery_edit',),
     url(r'^lbtf/beer/list$', views.beer_list, name='beer_list'),
     url(r'^lbtf/beer/new$', views.beer_new, name='beer_new'),
+    url(r'^lbtf/beer/(?P<pk>\d+)/edit$', BeerUpdate.as_view(), name='beer_edit',),
     url(r'^lbtf/event/beer/list$', views.event_beer_list, name='event_beer_list'),
     url(r'^lbtf/event/brewery/new$', views.event_brewery_new, name='event_brewery_new'),
     url(r'^lbtf/event/beer/new$', EventBeerCreate.as_view(), name='event_beer_new'),

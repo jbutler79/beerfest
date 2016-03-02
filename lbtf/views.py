@@ -231,3 +231,29 @@ class BreweryUpdate(UpdateView):
         context['action'] = reverse('brewery_edit',
                                     kwargs={'pk': self.get_object().id})
         return context
+
+
+class BeerUpdate(UpdateView):
+    model = Beer
+    template_name = 'lbtf/beer_edit.html'
+    form_class = forms.BeerForm
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        if not obj.id:
+            obj.added_by = self.request.user
+        obj.updated_by = self.request.user
+        obj.save()
+        return redirect('beer_list')
+
+    def form_invalid(self, form):
+        return HttpResponse(form.errors.as_ul())
+
+    def get_success_url(self):
+        return reverse('beer_list')
+
+    def get_context_data(self, **kwargs):
+        context = super(BeerUpdate, self).get_context_data(**kwargs)
+        context['action'] = reverse('beer_edit',
+                                    kwargs={'pk': self.get_object().id})
+        return context

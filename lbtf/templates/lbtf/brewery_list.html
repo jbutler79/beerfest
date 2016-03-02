@@ -1,9 +1,14 @@
 {% extends 'lbtf/base.html' %}
 
 {% block content %}
-  <div class="container"><form class="form-horizontal"><fieldset>
-  <legend><h2>Brewery List</h2></legend>
-
+  <div class="container"><form class="form-horizontal">
+  <legend>
+    <h2>Brewery List
+      <a href="{% url "brewery_new" %}" class="btn btn-default"
+      style="float:right; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Add Brewery</a>
+    </h2>
+  </legend>
+<!--
   {% for brewery in breweries %}
     <div class="media">
       <div class="media-left media-middle">
@@ -17,7 +22,24 @@
         <br><a href="{{ brewery.website }}">{{ brewery.website }}</a></p>
       </div>
     </div>
-    {% endfor %}
-
-  </fieldset></form></div>
+  {% endfor %}
+-->
+    <table style="display: table;" class="table table-striped footable" data-sorting="true" data-filtering="true" >
+      <thead>
+        <th data-type="html"></th>
+        <th data-type="html" data-breakpoints="">Brewery</th>
+      </thead>
+      <tbody>
+      {% for brewery in breweries %}
+        <tr>
+          <td style="vertical-align:middle"><img src="{{ brewery.logo.url }}" alt="..." style="height:64px; width:64px" style:"vertical-align:middle"></td>
+          <td><h4>{{ brewery.brewery_name }} (<a href="{% url "brewery_edit" pk=brewery.id %}">edit</a>)</h4>
+            {{ brewery.city }}, {{ brewery.state_province }} {{ brewery.country }}
+            <br><a href="{{ brewery.website }}">{{ brewery.website }}</a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div></div>
 {% endblock %}

@@ -4,81 +4,43 @@
   <head>
     <title>Lansdale Beer Tasting Festival Administration</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footable.bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/lbtf.css' %}">
-    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
-    <script src="{% static 'script/jquery.min.js' %}"></script>
-    <script src="{% static 'script/bootstrap.js' %}"></script>
-      <style>
-        body {
-            position: relative;
-        }
-        .affix {
-            top:0;
-            width: 100%;
-            z-index: 9999 !important;
-        }
-        /*.navbar {
-            margin-bottom: 25px;
-        }
-*/
-        .affix ~ .container-fluid {
-           position: relative;
-           top: 50px;
-        }
-      </style>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/footable.js' %}"></script>
+
+    <script type="text/javascript">jQuery(function($){$('.footable').footable();});</script>
 
   </head>
   <body>
-    <!--<div class="container-fluid" style="background-color:#ff9400;color:#fff;height:140px;">
-      <h1><img style="margin-right: 20px; height: 100px; width: 100px;" src="/images/bf_logo_bw_150x150.gif" /></h1>
-    </div>-->
-
-    <!--<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="97">-->
-    <!--<nav class="navbar navbar-default navbar-static-top" data-spy="affix" data-offset-top="97" style="height:140px">-->
-    <nav class="navbar navbar-default navbar-static-top" data-spy="affix" data-offset-top="0" style="height:140px">
-      <div class="container-fluid"><div class="navbar-header">
-      <a class="navbar-brand" href="#">
-      <img style="margin-right: 20px; height: 100px; width: 100px;" src="/images/bf_logo_bw_150x150.gif" /></a></div>
-      <ul class="nav navbar-nav">
-        <!--<li class="active"><a href="#">Home</a></li>-->
-        <li><a href="{% url 'brewery_list' %}">Breweries</a></li>
-        <li><a href="{% url 'beer_list' %}">Beers</a></li>
-        <li><a href="{% url 'brewery_new' %}">Add Brewery</a></li>
-        <li><a href="{% url 'beer_new' %}">Add Beer</a></li>
-        <li><a href="{% url 'event_brewery_new' %}">Add Brewery to Event</a></li>
-        <li><a href="{% url 'event_beer_new' %}">Add Beer to Event</a></li>
-      </ul></div>
-    </nav>
-<!--
     <nav class="navbar-default navbar-right">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="{% url 'brewery_new' %}">Add Brewery</a></li>
+          <!--<li><a href="{% url 'brewery_new' %}">Add Brewery</a></li>-->
           <li><a href="{% url 'brewery_list' %}">Breweries</a></li>
-          <li><a href="{% url 'beer_new' %}">Add Beer</a></li>
+          <!--<li><a href="{% url 'beer_new' %}">Add Beer</a></li>-->
           <li><a href="{% url 'beer_list' %}">Beers</a></li>
           <li><a href="{% url 'event_brewery_new' %}">Add Brewery to Event</a></li>
           <li><a href="{% url 'event_beer_new' %}">Add Beer to Event</a></li>
         </ul>
       </div>
     </nav>
-    <div class="page-header">
-      <h1>Lansdale Beer Tasting Festival</h1>
+    <div class="page-header" style="height: 100px; padding:0px;">
+      <h1><a href="#">
+      <img style="margin-right: 20px; height: 100px; width: 100px; padding: 5px" src="/images/bf_logo_bw_150x150.gif" /></a></h1>
+      <!--<h1>Lansdale Beer Tasting Festival</h1>-->
     </div>
--->
-    <!--<div class="content container">
-      <div class="row">
-          <div class="col-md-8">-->
-            {% block content %}
-            {% endblock %}
-    <!--      </div>
-      </div>
-    </div>-->
+    {% block content %}
+    {% endblock %}
+
     {% block extra-js %}{% endblock %}
 
   </body>

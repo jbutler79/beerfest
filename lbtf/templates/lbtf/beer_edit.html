@@ -8,11 +8,11 @@
       <fieldset>
         {% if beer.id %}
           <legend><h2>Edit Beer</h2></legend>
-          <input type="hidden" value="{{beer.id}}" id="beer_id" />
+          <input type="hidden" value="{{ beer.id }}" id="beer_id" />
         {% else %}
           <legend><h2>Add Beer</h2></legend>
         {% endif %}
-
+        <script>alert({{beer.id}});</script>
         {% for field in form %}
           <div class="form-group" id="{{ field.auto_id }}_container">
             <label class="col-md-4 control-label" for="{{ field.label }}">{{ field.label_tag }}</label>
@@ -21,6 +21,7 @@
         {% endfor %}
 
         <input id="save_beer" type="submit" class="btn btn-default col-md-offset-4" value="Save" />
+        <a href="{% url "beer_list" %}" class="btn btn-default">Cancel</a>
       </fieldset>
     </form>
   </div>

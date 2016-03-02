@@ -13,6 +13,7 @@ Vagrant.configure(2) do |config|
 
     django_config.vm.network "private_network", ip: "192.168.79.10"
     django_config.vm :forward_port, guest: 80, host: 8080
+    django_config.vm :forward_port, guest: 5432, host: 15432
     #django_config.vm.provision "shell", path: "install.sh"
   
   end

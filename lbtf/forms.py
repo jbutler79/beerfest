@@ -6,12 +6,13 @@ from .models import Brewery, Beer, Event, Event_Brewery, Event_Beer
 class BreweryForm(forms.ModelForm):
     class Meta:
         model = Brewery
-        fields = ('brewery_name', 'city', 'state_province', 'country',
+        fields = ('brewery_name', 'brewery_full_name', 'city', 'state_province', 'country',
                   'website', 'wordpress_logo_url', 'logo',)
 
     def __init__(self, *args, **kwargs):
         super(BreweryForm, self).__init__(*args, **kwargs)
         self.fields['brewery_name'].widget.attrs.update({'class': 'form-control'})
+        self.fields['brewery_full_name'].widget.attrs.update({'class': 'form-control'})
         self.fields['city'].widget.attrs.update({'class': 'form-control'})
         self.fields['state_province'].widget.attrs.update({'class': 'form-control'})
         self.fields['country'].widget.attrs.update({'class': 'form-control'})

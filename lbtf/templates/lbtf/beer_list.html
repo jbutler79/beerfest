@@ -1,26 +1,39 @@
 {% extends 'lbtf/base.html' %}
 
 {% block content %}
-  <table class="table-striped" style="width:800px">
-    <thead>
-      <th>Beer</th>
-      <th>Brewery</th>
-      <th>Style</th>
-      <th>ABV</th>
-    </thead>
-    {% for beer in beers %}
-      <tr>
-        <td>{{ beer.beer_name }}</td>
-        <td>{{ beer.brewery }}</td>
-        <td>{{ beer.style }}</td>
-        <td>{{ beer.abv }}</td>
-      </tr>
-      <!--<div>
-        <h4>{{ beer.beer_name }}</h4>
-        <p>Brewery: {{ beer.brewery }}<br>
-           Style: {{ beer.style }}<br>
-           ABV: {{ beer.abv }}</p>
-      </div> -->
-    {% endfor %}
-  </table>
+  <div class="container"><form class="form-horizontal">
+  <legend>
+    <h2>Beer List
+      <a href="{% url "beer_new" %}" class="btn btn-default"
+      style="float:right; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Add Beer</a>
+    </h2>
+  </legend>
+    <table style="display: table;" class="table table-striped footable" data-sorting="true" data-filtering="true">
+      <thead>
+        <th data-type="html">Beer</th>
+        <th>Brewery</th>
+        <th>Style</th>
+        <th>ABV</th>
+        <th data-breakpoints="xs">Description</th>
+        <th data-breakpoints="xs" data-type="html">Untappd</th>
+        <th data-breakpoints="xs" data-type="html">Rate Beer</th>
+        <th data-breakpoints="xs" data-type="html">Beer Advocate</th>
+      </thead>
+      {% for beer in beers %}
+        <tr>
+          <td>{{ beer.beer_name }} (<a href="{% url "beer_edit" pk=beer.id %}">edit</a>)</td>
+          <td>{{ beer.brewery }}</td>
+          <td>{{ beer.style }}</td>
+          <td>{{ beer.abv }}</td>
+          <td>{{ beer.description }}</td>
+          <td>{{ beer.untappd_url }}</td>
+          <td>{{ beer.rate_beer_url }}</td>
+          <td>{{ beer.beer_advocate_url }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  </form></div>
+
+
 {% endblock %}

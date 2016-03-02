@@ -8,7 +8,7 @@
       <fieldset>
         {% if brewery.id %}
           <legend><h2>Edit Brewery</h2></legend>
-          <input type="hidden" value="{{brewery.id}}" id="brewery_id" />
+          <input type="hidden" value="{{ brewery.id }}" id="brewery_id" />
         {% else %}
           <legend><h2>Add Brewery</h2></legend>
         {% endif %}
@@ -24,6 +24,5 @@
         <a href="{% url "brewery_list" %}" class="btn btn-default">Cancel</a>
       </fieldset>
     </form>
-    <!--<script type='text/javascript' src="{% static "script/jquery.js" %}"></script>-->
   </div>
 {% endblock %}
