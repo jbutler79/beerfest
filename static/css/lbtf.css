@@ -14,25 +14,27 @@
 opacity: 0.7;
 /*margin-top:30px;*/
 }
-.input-group-addon
-{
+.input-group-addon {
     background-color: rgb(50, 118, 177);
     border-color: rgb(40, 94, 142);
     color: rgb(255, 255, 255);
 }
 
-.form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }
+.form-signup input[type="text"],.form-signup input[type="password"] {
+    border: 1px solid rgb(50, 118, 177);
+}
 
-input[id="id_vip"], input[id="id_bottle_row"], input[id="id_brewmaster"] {margin:12px 0 0 0;}
+input[id="id_vip"], input[id="id_bottle_row"], input[id="id_brewmaster"] {
+    margin:12px 0 0 0;
+}
 
-.footer {
+/*footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
-}
+}*/
 
 
 /*body {
