@@ -1,0 +1,188 @@
+{% extends 'lbtf/base.html' %}
+
+{% block content %}
+<!-- Header Carousel -->
+  <header id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <div class="fill" style="background-image:url('/images/EvolutionOfBeer_sldr.jpg');"></div>
+        <div class="carousel-caption">
+          <!--<h2></h2>-->
+        </div>
+      </div>
+      <div class="item">
+        <div class="fill" style="background-image:url('/images/LBTFArial.png');"></div>
+        <div class="carousel-caption"></div>
+      </div>
+      <div class="item">
+        <div class="fill" style="background-image:url('/images/SponsorsBanner_sldr.jpg');"></div>
+        <div class="carousel-caption"></div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="icon-next"></span>
+    </a>
+  </header>
+
+  <!-- Page Content -->
+<!--
+  <div class="container">
+-->
+    <!-- Marketing Icons Section -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Brewery & Beer Administration for the Lansdale Beer Festival</h1>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4><i class="fa fa-fw fa-check"></i>Event Details</h4>
+          </div>
+          <div class="panel-body">
+            <p>
+              The 7th Annual Lansdale Beer Tasting Festival will be on Saturday June 25th!
+              Details on the event will be posted on the event website, Facebook, and Twitter as they come together...
+            </p>
+            <a href="http://lansdalebeerfest.com/" target="_blank" class="btn btn-primary">Read More...</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4><i class="fa fa-fw fa-check"></i>Breweries</h4>
+          </div>
+          <div class="panel-body">
+            <p></p>
+            <a href="#" data-toggle="modal" data-target="#eventBreweryModal" class="btn btn-primary">Breweries by Event</a>
+            <a href="{% url 'brewery_list' %}" class="btn btn-primary">Complete Brewery List</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4><i class="fa fa-fw fa-check"></i>Beers</h4>
+          </div>
+          <div class="panel-body">
+            <p></p>
+            <a href="#" data-toggle="modal" data-target="#eventBeerModal" class="btn btn-primary">Beers by Event</a>
+            <a href="{% url 'beer_list' %}" class="btn btn-primary">Complete Beer List</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Portfolio Section -->
+<!--
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header">Portfolio Heading</h2>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a href="portfolio-item.html">
+          <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a href="portfolio-item.html">
+          <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a href="portfolio-item.html">
+          <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a href="portfolio-item.html">
+          <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a href="portfolio-item.html">
+          <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <a href="portfolio-item.html">
+          <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+        </a>
+      </div>
+    </div>
+-->
+    <!-- /.row -->
+
+    <!-- Features Section -->
+<!--
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header">Modern Business Features</h2>
+      </div>
+      <div class="col-md-6">
+        <p>The Modern Business template by Start Bootstrap includes:</p>
+        <ul>
+          <li><strong>Bootstrap v3.2.0</strong></li>
+          <li>jQuery v1.11.0</li>
+          <li>Font Awesome v4.1.0</li>
+          <li>Working PHP contact form with validation</li>
+          <li>Unstyled page elements for easy customization</li>
+          <li>17 HTML pages</li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+      </div>
+      <div class="col-md-6">
+        <img class="img-responsive" src="http://placehold.it/700x450" alt="">
+      </div>
+    </div>
+-->
+    <!-- /.row -->
+<!--
+    <hr>
+-->
+    <!-- Call to Action Section -->
+<!--
+    <div class="well">
+      <div class="row">
+        <div class="col-md-8">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+  </div>
+-->
+  <!-- /.container -->
+
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Script to Activate the Carousel -->
+  <script>
+    $('.carousel').carousel({
+      interval: 5000 //changes the speed
+    })
+  </script>
+{% endblock %}

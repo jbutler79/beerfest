@@ -1,45 +1,46 @@
 {% extends 'lbtf/base.html' %}
+{% load static %}
 
 {% block content %}
-  <div class="container"><form class="form-horizontal">
-  <legend>
-    <h2>Brewery List
-      <a href="{% url "brewery_new" %}" class="btn btn-default"
-      style="float:right; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Add Brewery</a>
-    </h2>
-  </legend>
-<!--
-  {% for brewery in breweries %}
-    <div class="media">
-      <div class="media-left media-middle">
-        <a href="{{ brewery.website }}">
-          <img class="media-object" src="{{ brewery.logo.url }}" alt="..." style="height:64px; width:64px">
-        </a>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">{{ brewery.brewery_name }} (<a href="{% url "brewery_edit" pk=brewery.id %}">edit</a>)</h4>
-        <p>{{ brewery.city }}, {{ brewery.state_province }} {{ brewery.country }}
-        <br><a href="{{ brewery.website }}">{{ brewery.website }}</a></p>
-      </div>
-    </div>
-  {% endfor %}
--->
-    <table style="display: table;" class="table table-striped footable" data-sorting="true" data-filtering="true" >
-      <thead>
-        <th data-type="html"></th>
-        <th data-type="html" data-breakpoints="">Brewery</th>
-      </thead>
-      <tbody>
-      {% for brewery in breweries %}
-        <tr>
-          <td style="vertical-align:middle"><img src="{{ brewery.logo.url }}" alt="..." style="height:64px; width:64px" style:"vertical-align:middle"></td>
-          <td><h4>{{ brewery.brewery_name }} (<a href="{% url "brewery_edit" pk=brewery.id %}">edit</a>)</h4>
-            {{ brewery.city }}, {{ brewery.state_province }} {{ brewery.country }}
-            <br><a href="{{ brewery.website }}">{{ brewery.website }}</a>
-          </td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  </div></div>
+<h2>Complete Brewery List
+  {% if user.is_authenticated %}
+  <a href="{% url "brewery_new" %}" class="btn btn-primary"
+     style="float:right; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Add Brewery</a>
+  {% endif %}
+</h2>
+<hr>
+<table class="table footable" data-sorting="true" data-filtering="true">
+  <thead>
+    <th data-type="html" data-sortable="false" data-filterable="false"></th>
+    <th data-type="html" data-breakpoints="">Brewery</th>
+    {% if user.is_authenticated %}
+    <th data-type="html" data-sortable="false" data-filterable="false"></th>
+    <th data-breakpoints="xs">Created By</th>
+    <th data-breakpoints="xs">Created Date</th>
+    <th data-breakpoints="xs">Last Update By</th>
+    <th data-breakpoints="xs">Last Update Date</th>
+    {% endif %}
+  </thead>
+  <tbody>
+    {% for brewery in breweries %}
+    <tr>
+      <td>
+        <img src="{{ brewery.logo.url }}" alt="..." style="height:64px; width:64px; vertical-align:middle">
+      </td>
+      <td>
+        <strong>{{ brewery.brewery_name }}</strong>
+        <br>{{ brewery.city }}, {{ brewery.state_province }} {{ brewery.country }}
+        <br><a href="{{ brewery.website }}">{{ brewery.website }}</a>
+      </td>
+      {% if user.is_authenticated %}
+      <td><a href="{% url "brewery_edit" pk=brewery.id %}" class="btn btn-primary glyphicon glyphicon-edit"></a></td>
+      <td>{{ brewery.added_by }}</td>
+      <td>{{ brewery.added_dt }}</td>
+      <td>{{ brewery.updated_by }}</td>
+      <td>{{ brewery.updated_dt }}</td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

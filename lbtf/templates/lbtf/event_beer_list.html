@@ -1,31 +1,54 @@
 {% extends 'lbtf/base.html' %}
+{% load static %}
 
 {% block content %}
-  <!--<div class="container"><form class="form-horizontal"><fieldset>-->
-  <legend><h2>Event Beer List</h2></legend>
-    <table style="display: table;" class="table table-striped footable" data-sorting="true" data-filtering="true" >
-    <!--<table class="footable" data-sorting="true" data-filtering="true" style="display:table;">-->
-      <thead>
-        <th>Beer</th>
-        <th>Style</th>
-        <th data-breakpoints="xs">ABV</th>
-        <th data-breakpoints="xs">VIP</th>
-        <th data-breakpoints="xs">Bottle Row</th>
-        <th data-breakpoints="xs"></th>
-      </thead>
-      <tbody>
-      {% for event_beer in event_beers %}
-        <tr>
-          <td>{{ event_beer.beer.brewery }} {{ event_beer.beer.beer_name }}</td>
-          <td>{{ event_beer.beer.style }}</td>
-          <td>{{ event_beer.beer.abv }}</td>
-          <td>{{ event_beer.vip }}</td>
-          <td>{{ event_beer.bottle_row }}</td>
-          <td><a href="{% url "event_beer_edit" pk=event_beer.id %}">edit</a></td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  <!--</fieldset></form></div>-->
+<h2><span id="eventYear"></span>
+  {% if user.is_authenticated %}
+  <a href="{% url "event_beer_new" %}" class="btn btn-primary"
+     style="float:right; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Add Beer to Event</a>
+  {% endif %}
+</h2>
+<table style="display: table;" class="table table-striped footable" data-sorting="true" data-filtering="true" >
+  <thead>
+    <th data-type="html">Beer</th>
+    <th>Style</th>
+    <th>ABV</th>
+    <th data-breakpoints="xs">VIP</th>
+    <th data-breakpoints="xs">Bottle Row</th>
+    <th data-breakpoints="xs">Brewmaster</th>
+    {% if user.is_authenticated %}
+    <th data-type="html" data-sortable="false" data-filterable="false"></th>
+    <th data-breakpoints="xs">Created By</th>
+    <th data-breakpoints="xs">Created Date</th>
+    <th data-breakpoints="xs">Last Update By</th>
+    <th data-breakpoints="xs">Last Update Date</th>
+    {% endif %}
+  </thead>
+  <tbody>
+    {% for event_beer in event_beers %}
+    <tr>
+      <td>{{ event_beer.beer.brewery }} {{ event_beer.beer.beer_name }}</td>
+      <td>{{ event_beer.beer.style }}</td>
+      <td>{{ event_beer.beer.abv }}</td>
+      <td>{{ event_beer.vip }}</td>
+      <td>{{ event_beer.bottle_row }}</td>
+      <td>{{ event_beer.brewmaster }}</td>
+      {% if user.is_authenticated %}
+      <td><a href="{% url "event_beer_edit" pk=event_beer.id %}" class="btn btn-primary glyphicon glyphicon-edit"></a></td>
+      <td>{{ event_beer.added_by }}</td>
+      <td>{{ event_beer.added_dt }}</td>
+      <td>{{ event_beer.updated_by }}</td>
+      <td>{{ event_beer.updated_dt }}</td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script type="text/javascript">
+  $(document).ready(function(){
+      var str = '{{ event_beers.0.event_brewery.event }}';
+      $('#eventYear').html(str.substring(0,5) + "Beer List");
+  });
+</script>
 
 {% endblock %}

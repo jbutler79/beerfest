@@ -3,45 +3,51 @@
 <html>
   <head>
     <title>Lansdale Beer Tasting Festival Administration</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footable.bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/lbtf.css' %}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/modern-business.css' %}">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footable.bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lbtf.css' %}">
 
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/moment.js' %}"></script>
     <script src="{% static 'js/footable.js' %}"></script>
-
-    <script type="text/javascript">jQuery(function($){$('.footable').footable();});</script>
+    <script type="text/javascript">
+      jQuery(function($){
+        $('.footable').footable();
+      });
+    </script>
 
   </head>
+
   <body>
-    <nav class="navbar-default navbar-right">
-      <div class="container-fluid">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <!--<li><a href="{% url 'brewery_new' %}">Add Brewery</a></li>-->
-          <li><a href="{% url 'brewery_list' %}">Breweries</a></li>
-          <!--<li><a href="{% url 'beer_new' %}">Add Beer</a></li>-->
-          <li><a href="{% url 'beer_list' %}">Beers</a></li>
-          <li><a href="{% url 'event_brewery_new' %}">Add Brewery to Event</a></li>
-          <li><a href="{% url 'event_beer_new' %}">Add Beer to Event</a></li>
-        </ul>
-      </div>
-    </nav>
-    <div class="page-header" style="height: 100px; padding:0px;">
-      <h1><a href="#">
-      <img style="margin-right: 20px; height: 100px; width: 100px; padding: 5px" src="/images/bf_logo_bw_150x150.gif" /></a></h1>
-      <!--<h1>Lansdale Beer Tasting Festival</h1>-->
+
+    {% include 'lbtf/navbar.html' %}
+
+    <div class="container">
+      {% include 'lbtf/login_modal.html' %}
+      {% block content %}{% endblock %}
+
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; <a href="http://lansdalebeerfest.com/" target="_blank">Lansdale Beer Tasting Festival</a></p>
+          </div>
+        </div>
+      </footer>
+
+      {% block extra-js %}{% endblock %}
+
     </div>
-    {% block content %}
-    {% endblock %}
-
-    {% block extra-js %}{% endblock %}
-
   </body>
 </html>

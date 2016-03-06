@@ -1,0 +1,44 @@
+{% extends 'lbtf/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2><span id="eventYear"></span>
+  {% if user.is_authenticated %}
+  <a href="{% url "event_brewery_new" %}" class="btn btn-primary"
+     style="float:right; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Add Brewery to Event</a>
+  {% endif %}
+</h2>
+<hr>
+<table class="table footable" data-sorting="true" data-filtering="true">
+  <thead>
+    <th data-type="html" data-sortable="false" data-filterable="false"></th>
+    <th data-type="html" data-breakpoints="">Brewery</th>
+    {% if user.is_authenticated %}
+    <th data-type="html" data-sortable="false" data-filterable="false"></th>
+    {% endif %}
+  </thead>
+  <tbody>
+    {% for event_brewery in event_breweries %}
+    <tr>
+      <td style="vertical-align:middle">
+        <img src="{{ event_brewery.brewery.logo.url }}" alt="..." style="height:64px; width:64px" style:"vertical-align:middle">
+      </td>
+      <td>
+        <strong>{{ event_brewery.brewery.brewery_name }} </strong>
+        <br>{{ event_brewery.brewery.city }}, {{ event_brewery.brewery.state_province }} {{ event_brewery.brewery.country }}
+        <br><a href="{{ event_brewery.brewery.website }}">{{ event_brewery.brewery.website }}</a>
+        <br>Tent: {{ event_brewery.area }}, Table: {{ event_brewery.booth }}
+      </td>
+      <td><a href="{% url "event_brewery_edit" pk=event_brewery.id %}" class="btn btn-primary glyphicon glyphicon-edit"></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      var str = '{{ event_breweries.0.event }}';
+      $('#eventYear').html(str.substring(0,5) + "Brewery List");
+  });
+</script>
+{% endblock %}

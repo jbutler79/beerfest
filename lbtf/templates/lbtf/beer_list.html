@@ -1,39 +1,51 @@
 {% extends 'lbtf/base.html' %}
+{% load static %}
 
 {% block content %}
-  <div class="container"><form class="form-horizontal">
-  <legend>
-    <h2>Beer List
-      <a href="{% url "beer_new" %}" class="btn btn-default"
-      style="float:right; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Add Beer</a>
-    </h2>
-  </legend>
-    <table style="display: table;" class="table table-striped footable" data-sorting="true" data-filtering="true">
-      <thead>
-        <th data-type="html">Beer</th>
-        <th>Brewery</th>
-        <th>Style</th>
-        <th>ABV</th>
-        <th data-breakpoints="xs">Description</th>
-        <th data-breakpoints="xs" data-type="html">Untappd</th>
-        <th data-breakpoints="xs" data-type="html">Rate Beer</th>
-        <th data-breakpoints="xs" data-type="html">Beer Advocate</th>
-      </thead>
-      {% for beer in beers %}
-        <tr>
-          <td>{{ beer.beer_name }} (<a href="{% url "beer_edit" pk=beer.id %}">edit</a>)</td>
-          <td>{{ beer.brewery }}</td>
-          <td>{{ beer.style }}</td>
-          <td>{{ beer.abv }}</td>
-          <td>{{ beer.description }}</td>
-          <td>{{ beer.untappd_url }}</td>
-          <td>{{ beer.rate_beer_url }}</td>
-          <td>{{ beer.beer_advocate_url }}</td>
-        </tr>
-      {% endfor %}
-    </table>
-
-  </form></div>
-
+<h2>Complete Beer List
+  {% if user.is_authenticated %}
+  <a href="{% url "beer_new" %}" class="btn btn-primary"
+     style="float:right; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Add Beer</a>
+  {% endif %}
+</h2>
+<hr>
+<table style="display: table;" class="table table-striped footable" data-sorting="true" data-filtering="true">
+  <thead>
+    <th data-type="html">Beer</th>
+    <th>Brewery</th>
+    <th>Style</th>
+    <th>ABV</th>
+    <th data-breakpoints="xs">Description</th>
+    <th data-breakpoints="xs" data-type="html">Untappd</th>
+    <th data-breakpoints="xs" data-type="html">Rate Beer</th>
+    <th data-breakpoints="xs" data-type="html">Beer Advocate</th>
+    {% if user.is_authenticated %}
+    <th data-type="html" data-sortable="false" data-filterable="false"></th>
+    <th data-breakpoints="xs">Created By</th>
+    <th data-breakpoints="xs">Created Date</th>
+    <th data-breakpoints="xs">Last Update By</th>
+    <th data-breakpoints="xs">Last Update Date</th>
+    {% endif %}
+  </thead>
+  {% for beer in beers %}
+  <tr>
+    <td>{{ beer.beer_name }}</td>
+    <td>{{ beer.brewery }}</td>
+    <td>{{ beer.style }}</td>
+    <td>{{ beer.abv }}</td>
+    <td>{{ beer.description }}</td>
+    <td>{{ beer.untappd_url }}</td>
+    <td>{{ beer.rate_beer_url }}</td>
+    <td>{{ beer.beer_advocate_url }}</td>
+    {% if user.is_authenticated %}
+    <td><a href="{% url "beer_edit" pk=beer.id %}" class="btn btn-primary glyphicon glyphicon-edit"></a></td>
+    <td>{{ beer.added_by }}</td>
+    <td>{{ beer.added_dt }}</td>
+    <td>{{ beer.updated_by }}</td>
+    <td>{{ beer.updated_dt }}</td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
 
 {% endblock %}

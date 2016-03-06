@@ -33,7 +33,6 @@ $(document).ready(function() {
   });
 
   if ($('#event_beer_id').val().length !== 0 && $('#event_beer_id').val() !== '') {
-    //alert($('#event_beer_id').val());
     event_beer_id = $('#event_beer_id').val();
     event_name_request_url = '/lbtf/event/beer/get_event_name' + event_beer_id + '/';
     brewery_name_request_url = '/lbtf/event/beer/get_brewery_name' + event_beer_id + '/';

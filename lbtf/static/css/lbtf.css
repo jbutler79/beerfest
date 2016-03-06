@@ -1,4 +1,43 @@
-body {
+.caret {
+    margin: 8 0 8 0;
+}
+
+.modal-dialog {
+    max-width: 300px;
+}
+
+.form-signin {
+    max-width: 280px;
+    padding: 15px;
+  }
+.panel-default {
+opacity: 0.7;
+/*margin-top:30px;*/
+}
+.input-group-addon {
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+    color: rgb(255, 255, 255);
+}
+
+.form-signup input[type="text"],.form-signup input[type="password"] {
+    border: 1px solid rgb(50, 118, 177);
+}
+
+input[id="id_vip"], input[id="id_bottle_row"], input[id="id_brewmaster"] {
+    margin:12px 0 0 0;
+}
+
+/*footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+}*/
+
+
+/*body {
     padding-left: 15px;
 }
 
@@ -49,5 +88,5 @@ h1, h2, h3, h4 {
 .post h1 a, .post h1 a:visited {
     color: #000000;
 }
-
+*/
 

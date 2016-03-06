@@ -263,7 +263,7 @@ class Event_Brewery(models.Model):
         return brewery_list
 
     def __str__(self):
-        e = Event.objects.get(id=self.event_id)
+        #e = Event.objects.get(id=self.event_id)
         b = Brewery.objects.get(id=self.brewery_id)
         #return e.date.strftime('%Y ') + e.event_name + ', ' + b.brewery_name
         return u"%s" % (b.brewery_name)

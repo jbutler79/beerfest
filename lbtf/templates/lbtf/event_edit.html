@@ -1,10 +1,27 @@
 {% extends 'lbtf/base.html' %}
+{% load static %}
 
 {% block content %}
-  <h1>Add Beer</h1>
-  <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="save btn btn-default">Save</button>
-  </form>
+<h2>Add Beer to Event</h2>
+<form method="POST" class="form-horizontal" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset>
+    {% if event.id %}
+    <h2>Edit Event</h2>
+    <input type="hidden" value="{{ brewery.id }}" id="brewery_id" />
+    {% else %}
+    <h2>Add Event</h2>
+    {% endif %}
 
+    {% for field in form %}
+    <div class="form-group" id="{{ field.auto_id }}_container">
+      <label class="col-md-4 control-label" for="{{ field.label }}">{{ field.label_tag }}</label>
+      <div class="col-md-4">{{ field }}</div>
+    </div>
+    {% endfor %}
+
+    <input type="submit" class="btn btn-primary col-md-offset-4" value="Save" />
+    <a href="{% url "index" %}" class="btn btn-default">Cancel</a>
+  </fieldset>
+</form>
 {% endblock %}

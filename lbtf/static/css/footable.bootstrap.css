@@ -110,7 +110,7 @@ table.footable > tbody > tr.footable-detail-row > th {
 	font-family: 'Glyphicons Halflings';
 	font-style: normal;
 	font-weight: 400;
-	line-height: 1;
+	/*line-height: 1;*/
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
