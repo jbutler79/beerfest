@@ -8,6 +8,7 @@ from .views import BreweryCreate, BreweryUpdate, BeerUpdate
 from .views import EventBeerCreate, EventBeerUpdate, EventBreweryCreate, EventBreweryUpdate
 
 urlpatterns = [
+    url(r'^$', views.index, name='index'),
     url(r'^lbtf/index$', views.index, name='index'),
     url(r'^lbtf/brewery/list$', views.brewery_list, name='brewery_list'),
     #url(r'^lbtf/brewery/new$', views.brewery_new, name='brewery_new'),
