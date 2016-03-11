@@ -12,7 +12,7 @@
   <thead>
     <th data-type="html">Beer</th>
     <th>Style</th>
-    <th>ABV</th>
+    <th data-breakpoints="xs">ABV</th>
     <th data-breakpoints="xs">VIP</th>
     <th data-breakpoints="xs">Bottle Row</th>
     <th data-breakpoints="xs">Brewmaster</th>
@@ -34,7 +34,8 @@
       <td>{{ event_beer.bottle_row }}</td>
       <td>{{ event_beer.brewmaster }}</td>
       {% if user.is_authenticated %}
-      <td><a href="{% url "event_beer_edit" pk=event_beer.id %}" class="btn btn-primary glyphicon glyphicon-edit"></a></td>
+      <td><a href="{% url "event_beer_edit" pk=event_beer.id %}"
+             class="btn btn-primary glyphicon glyphicon-edit"></a></td>
       <td>{{ event_beer.added_by }}</td>
       <td>{{ event_beer.added_dt }}</td>
       <td>{{ event_beer.updated_by }}</td>

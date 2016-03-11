@@ -11,7 +11,7 @@ class BreweryForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(BreweryForm, self).__init__(*args, **kwargs)
-        self.fields['brewery_name'].widget.attrs.update({'class': 'form-control'})
+        self.fields['brewery_name'].widget.attrs.update({'class': 'form-control', 'autofocus':'autofocus'})
         self.fields['brewery_full_name'].widget.attrs.update({'class': 'form-control'})
         self.fields['city'].widget.attrs.update({'class': 'form-control'})
         self.fields['state_province'].widget.attrs.update({'class': 'form-control'})
@@ -28,7 +28,7 @@ class BeerForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(BeerForm, self).__init__(*args, **kwargs)
-        self.fields['brewery'].widget.attrs.update({'class': 'form-control'})
+        self.fields['brewery'].widget.attrs.update({'class': 'form-control', 'autofocus':'autofocus'})
         self.fields['beer_name'].widget.attrs.update({'class': 'form-control'})
         self.fields['style'].widget.attrs.update({'class': 'form-control'})
         self.fields['abv'].widget.attrs.update({'class': 'form-control'})
@@ -52,7 +52,7 @@ class EventBreweryForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(EventBreweryForm, self).__init__(*args, **kwargs)
-        self.fields['event'].widget.attrs.update({'class': 'form-control'})
+        self.fields['event'].widget.attrs.update({'class': 'form-control', 'autofocus':'autofocus'})
         self.fields['brewery'].widget.attrs.update({'class': 'form-control'})
         self.fields['area'].widget.attrs.update({'class': 'form-control'})
         self.fields['booth'].widget.attrs.update({'class': 'form-control'})
@@ -69,7 +69,7 @@ class EventBeerForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(EventBeerForm, self).__init__(*args, **kwargs)
-        self.fields['event'].widget.attrs.update({'class': 'form-control'})
+        self.fields['event'].widget.attrs.update({'class': 'form-control', 'autofocus':'autofocus'})
         self.fields['brewery'].widget.attrs.update({'class': 'form-control'})
         self.fields['beer'].widget.attrs.update({'class': 'form-control'})
         #self.fields['vip'].widget.attrs.update({'class': 'form-control'})
