@@ -11,7 +11,7 @@
 <hr>
 <table class="footable table" data-sorting="true" data-filtering="true">
   <thead>
-    <th data-type="html">Brewery</th>
+    <th data-type="html" data-sorted="true">Brewery</th>
     <th data-type="html">Beer</th>
     <th>Style</th>
     <th data-breakpoints="xs sm">ABV</th>
@@ -27,45 +27,47 @@
     <th data-breakpoints="all">Last Update Date</th>
     {% endif %}
   </thead>
-  {% for beer in beers %}
-  <tr>
-    <td>{{ beer.brewery }}</td>
-    <td>{{ beer.beer_name }}</td>
-    <td>{{ beer.style }}</td>
-    <td>{{ beer.abv }}</td>
-    <td>
-      {% if beer.description|length > 4 %}
-      {{ beer.description }}</td>
+  <tbody>
+    {% for beer in beers %}
+    <tr>
+      <td>{{ beer.brewery }}</td>
+      <td>{{ beer.beer_name }}</td>
+      <td>{{ beer.style }}</td>
+      <td>{{ beer.abv }}</td>
+      <td>
+        {% if beer.description|length > 4 %}
+        {{ beer.description }}</td>
+        {% endif %}
+      <td>
+        {% if beer.untappd_url|length > 4 %}
+        <a href="{{ beer.untappd_url }}"
+            target="_blank">{{ beer.untappd_url }}</a>
+        {% endif %}
+      </td>
+      <td>
+        {% if beer.rate_beer_url|length > 4 %}
+        <a href="{{ beer.rate_beer_url }}"
+           target="blank">{{ beer.rate_beer_url }}</a></td>
+        {% endif %}
+      <td>
+        {% if beer.beer_advocate_url|length > 4 %}
+        <a href="{{ beer.beer_advocate_url }}"
+           target="blank">{{ beer.beer_advocate_url }}</a>
+        {% endif %}
+      </td>
+      {% if user.is_authenticated %}
+      <td>
+        <a href="{% url "beer_edit" pk=beer.id %}"
+           class="btn btn-primary glyphicon glyphicon-edit"></a>
+      </td>
+      <td>{{ beer.added_by }}</td>
+      <td>{{ beer.added_dt }}</td>
+      <td>{{ beer.updated_by }}</td>
+      <td>{{ beer.updated_dt }}</td>
       {% endif %}
-    <td>
-      {% if beer.untappd_url|length > 4 %}
-      <a href="{{ beer.untappd_url }}"
-          target="_blank">{{ beer.untappd_url }}</a>
-      {% endif %}
-    </td>
-    <td>
-      {% if beer.rate_beer_url|length > 4 %}
-      <a href="{{ beer.rate_beer_url }}"
-         target="blank">{{ beer.rate_beer_url }}</a></td>
-      {% endif %}
-    <td>
-      {% if beer.beer_advocate_url|length > 4 %}
-      <a href="{{ beer.beer_advocate_url }}"
-         target="blank">{{ beer.beer_advocate_url }}</a>
-      {% endif %}
-    </td>
-    {% if user.is_authenticated %}
-    <td>
-      <a href="{% url "beer_edit" pk=beer.id %}"
-         class="btn btn-primary glyphicon glyphicon-edit"></a>
-    </td>
-    <td>{{ beer.added_by }}</td>
-    <td>{{ beer.added_dt }}</td>
-    <td>{{ beer.updated_by }}</td>
-    <td>{{ beer.updated_dt }}</td>
-    {% endif %}
-  </tr>
-  {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 
 {% endblock %}

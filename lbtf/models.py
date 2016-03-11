@@ -187,7 +187,7 @@ class Beer(models.Model):
     beer_name = models.CharField(max_length=255)
     style = models.CharField(max_length=255, choices=STYLES)
     abv = models.DecimalField(max_digits=4, decimal_places=2)
-    description = models.TextField(max_length=500, default=None, blank=True, null=True)
+    description = models.TextField(max_length=1000, default=None, blank=True, null=True)
     website = models.URLField(max_length=255, default=None, blank=True, null=True)
     untappd_url = models.URLField(max_length=255, default=None, blank=True, null=True)
     beer_advocate_url = models.URLField(max_length=255, default=None, blank=True, null=True)
