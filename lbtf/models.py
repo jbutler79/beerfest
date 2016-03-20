@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
+from .storage import OverwriteStorage
 
 
 class Brewery(models.Model):
@@ -12,7 +13,7 @@ class Brewery(models.Model):
     country = models.CharField(max_length=50)
     website = models.URLField(default=None, blank=True, null=True)
     wordpress_logo_url = models.URLField(default=None, blank=True, null=True)
-    logo = models.ImageField(upload_to="breweries", default=None, blank=True, null=True)
+    logo = models.ImageField(upload_to="breweries", default=None, blank=True, null=True, storage=OverwriteStorage())
     added_by = models.ForeignKey(User, related_name='+')
     added_dt = models.DateTimeField(auto_now_add=True)
     updated_by = models.ForeignKey(User, related_name='+')
